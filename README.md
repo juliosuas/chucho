@@ -30,3 +30,4 @@ Just open `index.html` in a browser. No build step needed.
 
 ## License
 MIT
+
