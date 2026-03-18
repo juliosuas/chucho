@@ -1,0 +1,516 @@
+/* ========================================
+   CHUCHO - Global Styles
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: #1a1a2e;
+    overflow: hidden;
+    font-family: 'Segoe UI', 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   HUD
+   ======================================== */
+
+#hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#hud span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+#hud-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#streak-display {
+    font-size: 16px !important;
+    color: #ffd700 !important;
+}
+
+/* ========================================
+   Overlays
+   ======================================== */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+.overlay-content {
+    text-align: center;
+    color: #fff;
+    max-width: 500px;
+    padding: 30px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   Title Screen
+   ======================================== */
+
+.game-title {
+    font-size: 72px;
+    color: #FFD700;
+    text-shadow: 
+        3px 3px 0px #E67E22,
+        6px 6px 0px rgba(0,0,0,0.3);
+    letter-spacing: 8px;
+    margin-bottom: 0;
+    animation: titleBounce 2s ease-in-out infinite;
+}
+
+@keyframes titleBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+}
+
+.game-subtitle {
+    font-size: 24px;
+    color: #87CEEB;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+/* ========================================
+   Level Select
+   ======================================== */
+
+#level-select {
+    margin: 20px 0;
+}
+
+#level-select h3 {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 12px;
+}
+
+#level-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.level-btn {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #FFD700;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.15);
+    color: #FFD700;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.level-btn:hover {
+    background: rgba(255, 215, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.level-btn.selected {
+    background: #FFD700;
+    color: #333;
+    transform: scale(1.15);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.level-btn.locked {
+    border-color: #555;
+    color: #555;
+    background: rgba(85, 85, 85, 0.15);
+    cursor: not-allowed;
+}
+
+.level-btn.locked:hover {
+    transform: none;
+    background: rgba(85, 85, 85, 0.15);
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+
+.btn-main {
+    display: inline-block;
+    padding: 16px 50px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #2ECC71, #27AE60);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+}
+
+.btn-main:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(46, 204, 113, 0.6);
+}
+
+.btn-main:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ccc;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* ========================================
+   Question Panel
+   ======================================== */
+
+#question-panel {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,248,255,0.95));
+    border-radius: 24px;
+    padding: 20px 30px;
+    min-width: 340px;
+    max-width: 90vw;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    z-index: 30;
+    animation: slideUp 0.3s ease-out;
+    border: 3px solid #3498db;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+#question-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2C3E50;
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+#answer-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.answer-btn {
+    padding: 14px 28px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #3498DB, #2980B9);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 70px;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.answer-btn:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+}
+
+.answer-btn:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.answer-btn.correct {
+    background: linear-gradient(135deg, #2ECC71, #27AE60) !important;
+    animation: correctPulse 0.4s ease;
+}
+
+.answer-btn.wrong {
+    background: linear-gradient(135deg, #E74C3C, #C0392B) !important;
+    animation: wrongShake 0.5s ease;
+}
+
+@keyframes correctPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes wrongShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+}
+
+/* ========================================
+   Splash & Correct Messages
+   ======================================== */
+
+#splash-message, #correct-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 40;
+    pointer-events: none;
+}
+
+#splash-message span {
+    font-size: 42px;
+    font-weight: bold;
+    color: #E74C3C;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    animation: messagePop 1.5s ease-out forwards;
+}
+
+#correct-message span {
+    font-size: 48px;
+    font-weight: bold;
+    color: #2ECC71;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    animation: messagePop 1.5s ease-out forwards;
+}
+
+@keyframes messagePop {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+    40% {
+        transform: scale(1);
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1) translateY(-40px);
+    }
+}
+
+/* ========================================
+   Victory Screen
+   ======================================== */
+
+.victory-title {
+    font-size: 56px;
+    color: #FFD700;
+    text-shadow: 
+        3px 3px 0px #E67E22,
+        6px 6px 0px rgba(0,0,0,0.3);
+    animation: titleBounce 1s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+#victory-stars {
+    font-size: 48px;
+    margin: 16px 0;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+#victory-score {
+    font-size: 24px;
+    color: #87CEEB;
+    margin: 10px 0;
+}
+
+#victory-message {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* ========================================
+   High Scores
+   ======================================== */
+
+#high-scores-display {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* ========================================
+   Hidden utility
+   ======================================== */
+
+.hidden {
+    display: none !important;
+}
+
+/* ========================================
+   Mobile Responsiveness
+   ======================================== */
+
+@media (max-width: 600px) {
+    .game-title {
+        font-size: 48px;
+        letter-spacing: 4px;
+    }
+
+    .game-subtitle {
+        font-size: 18px;
+    }
+
+    #question-text {
+        font-size: 22px;
+    }
+
+    .answer-btn {
+        padding: 12px 20px;
+        font-size: 20px;
+        min-width: 60px;
+    }
+
+    #question-panel {
+        padding: 16px 20px;
+        min-width: 280px;
+        bottom: 10px;
+    }
+
+    #hud span {
+        font-size: 14px;
+        padding: 4px 10px;
+    }
+
+    .btn-main {
+        padding: 14px 36px;
+        font-size: 22px;
+    }
+
+    .victory-title {
+        font-size: 40px;
+    }
+
+    .level-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    #splash-message span {
+        font-size: 32px;
+    }
+
+    #correct-message span {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 380px) {
+    .game-title {
+        font-size: 36px;
+    }
+
+    #question-panel {
+        min-width: 260px;
+        padding: 12px 14px;
+    }
+
+    .answer-btn {
+        padding: 10px 16px;
+        font-size: 18px;
+    }
+}

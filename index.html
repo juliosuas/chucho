@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Chucho y las Aventuras del Río</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- HUD -->
+        <div id="hud">
+            <div id="hud-left">
+                <span id="level-display">Nivel: 1</span>
+            </div>
+            <div id="hud-right">
+                <span id="score-display">Estrellas: ⭐ 0</span>
+                <span id="streak-display"></span>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="overlay">
+            <div class="overlay-content">
+                <h1 class="game-title">CHUCHO</h1>
+                <h2 class="game-subtitle">y las Aventuras del Río</h2>
+                <div id="level-select">
+                    <h3>Elige tu nivel:</h3>
+                    <div id="level-buttons"></div>
+                </div>
+                <button id="btn-play" class="btn-main">¡Jugar!</button>
+                <div id="high-scores-display"></div>
+            </div>
+        </div>
+
+        <!-- Question Panel -->
+        <div id="question-panel" class="hidden">
+            <div id="question-text"></div>
+            <div id="answer-buttons"></div>
+        </div>
+
+        <!-- Victory Screen -->
+        <div id="victory-screen" class="overlay hidden">
+            <div class="overlay-content">
+                <h1 class="victory-title">¡Felicidades!</h1>
+                <div id="victory-stars"></div>
+                <p id="victory-score"></p>
+                <p id="victory-message"></p>
+                <button id="btn-next-level" class="btn-main">Siguiente Nivel →</button>
+                <button id="btn-menu" class="btn-secondary">Menú Principal</button>
+            </div>
+        </div>
+
+        <!-- Splash Message -->
+        <div id="splash-message" class="hidden">
+            <span>¡Inténtalo de nuevo!</span>
+        </div>
+
+        <!-- Correct Message -->
+        <div id="correct-message" class="hidden">
+            <span>¡Muy bien!</span>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
